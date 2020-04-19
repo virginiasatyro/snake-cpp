@@ -21,11 +21,19 @@ using namespace std;
 #define WIDTH  20
 #define HEIGHT 20
 
+// define moving keys
 const char MOVE_LEFT  = 'A';
 const char MOVE_RIGHT = 'D';
 const char MOVE_UP    = 'W';
 const char MOVE_DOWN  = 'S';
 const char QUIT = 'Q';
+
+// define bricks
+#define WALL_TOP    "▄"
+#define WALL_BOTTOM "▀"
+#define WALL_LEFT   "▋"
+#define WALL_RIGHT  "▐"
+#define EMPTY_SPACE " "
 
 class Game
 {

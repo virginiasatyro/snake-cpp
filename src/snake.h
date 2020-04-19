@@ -13,6 +13,9 @@
 
 #define SNAKE_MAX 100
 
+#define SNAKE_HEAD '●'
+#define SNAKE_BODY '•'
+
 enum Direction {STOP = 0, LEFT, RIGHT, UP, DOWN};
 
 class Snake

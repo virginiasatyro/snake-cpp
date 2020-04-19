@@ -51,7 +51,7 @@ void draw()
 {
     system("clear"); // clear console
     
-    for(int i = 0; i < width + 1; i++) // top wall
+    for(int i = 0; i < width + 2; i++) // top wall
         cout << "#";
     cout << endl;
 
@@ -59,7 +59,7 @@ void draw()
     {
         for(int j = 0; j < width; j++)
         {
-            if(j == 0 || j == width - 1)
+            if(j == 0)
                 cout << "#";
             if(i == y && j == x) 
                 cout << "O"; // head
@@ -69,8 +69,7 @@ void draw()
             {
                 bool print = false;
                 for(int k = 0; k < n_tail; k++)
-                {
-                 
+                {                 
                     if(x_tail[k] == j && y_tail[k] == i)
                     {
                         cout << "o";
@@ -78,14 +77,15 @@ void draw()
                     }
                 }
                 if(!print)
-                    cout << " ";
-                
+                    cout << " ";      
             }
+            if(j == width - 1)
+                cout << "#";
         }
         cout << endl;
     }
 
-    for(int i = 0; i < width + 1; i++) //  bottom wall
+    for(int i = 0; i < width + 2; i++) //  bottom wall
         cout << "#";
     cout << endl;
 
@@ -128,7 +128,7 @@ void logic()
     x_tail[0] = x;
     y_tail[0] = y;
 
-    for(int i = 0; i < n_tail; i++)
+    for(int i = 1; i < n_tail; i++)
     {
         x2_prev = x_tail[i];
         y2_prev = y_tail[i];

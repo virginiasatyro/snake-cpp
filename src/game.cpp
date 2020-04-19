@@ -92,14 +92,35 @@ void Game::scoreUp()
 // draw functions
 void Game::draw()
 {
-    // system("clear");
+    // auxiliar variables
+    int x_snake = snake->getX();
+    int y_snake = snake->getY();
 
-    // for(int i = 0; i < getWidth(); i++)
-    //     cout << "#";
-    // cout << endl;
+    system("clear");
 
-    // for(int i = 0; i < getHeight(); i++)
+    for(int i = 0; i < getWidth() + 1; i++) // top wall
+        cout << WALL_TOP;
+    cout << endl;
 
+    for(int i = 0; i < getHeight(); i++)
+    {
+        for(int j = 0; j < getWidth(); j++)
+        {
+            if(j == 0)
+                cout << WALL_LEFT;
+            else 
+                cout << EMPTY_SPACE;
+            if(j == getWidth() - 1)
+                cout << WALL_RIGHT;
+        }
+        cout << endl;
+    }
+
+    for(int i = 0; i < getWidth() + 1; i++)
+        cout << WALL_BOTTOM;
+    cout << endl;
+
+    cout << "SCORE: " << getScore() << endl;
 }
 
 // input functions 
