@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "input.h"
+
 using namespace std;
 
 bool game_over = false;
@@ -46,30 +48,56 @@ void draw()
 {
     system("clear"); // clear console
     
-    for(int i = 0; i < width; i++) // top wall
+    for(int i = 0; i < width + 1; i++) // top wall
         cout << "#";
     cout << endl;
 
-    for(int i = 0; i < height; i++)
+    for(int i = 0; i < height; i++) // print lateral walls ans the in between 
     {
         for(int j = 0; j < width; j++)
         {
             if(j == 0 || j == width - 1)
                 cout << "#";
+            if(i == y && j == x) 
+                cout << "O"; // head
+            else if(i == y_fruit && j == x_fruit)
+                cout << "*";
             else 
                 cout << " ";
         }
         cout << endl;
     }
 
-    for(int i = 0; i < width; i++) //  bottom wall
+    for(int i = 0; i < width + 1; i++) //  bottom wall
         cout << "#";
     cout << endl;
 }
 
 void input()
 {
-
+    if(_kbhit())
+    {
+        switch (getchar())
+        {
+        case 'a':
+            direction = LEFT;
+            break;
+        case 'd':
+            direction = RIGHT;
+            break;
+        case 'w':
+            direction = UP;
+            break;
+        case 's':
+            direction = DOWN;
+            break;     
+        case 'q':
+            game_over = true;
+            break;   
+        default:
+            break;
+        }
+    }
 }
 
 void logic()
