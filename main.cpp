@@ -27,7 +27,7 @@ int main()
         input();
         logic();
         // sleep
-        usleep(30000);
+        usleep(80000);
     }
     
     return 0;
@@ -72,6 +72,8 @@ void draw()
     for(int i = 0; i < width + 1; i++) //  bottom wall
         cout << "#";
     cout << endl;
+
+    cout << "Score: " << score << endl;
 }
 
 void input()
@@ -119,5 +121,15 @@ void logic()
         break;  
     default:
         break;
+    }
+
+    if(x > width || x < 0 || y > height || y < 0)
+        game_over = true;
+
+    if(x == x_fruit && y == y_fruit)
+    {
+        score += 10;
+        x_fruit = rand() % width;
+        y_fruit = rand() % height;
     }
 }
