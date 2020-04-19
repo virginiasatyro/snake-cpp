@@ -8,6 +8,8 @@ bool game_over = false;
 const int width = 20;
 const int height = 20;
 int x, y;
+int x_tail[100], y_tail[100];
+int n_tail;
 int x_fruit, y_fruit;
 int score;
 enum Direction{STOP = 0, LEFT, RIGHT, UP, DOWN};
@@ -27,7 +29,7 @@ int main()
         input();
         logic();
         // sleep
-        usleep(80000);
+        usleep(100000);
     }
     
     return 0;
@@ -64,7 +66,21 @@ void draw()
             else if(i == y_fruit && j == x_fruit)
                 cout << "*";
             else 
-                cout << " ";
+            {
+                bool print = false;
+                for(int k = 0; k < n_tail; k++)
+                {
+                 
+                    if(x_tail[k] == j && y_tail[k] == i)
+                    {
+                        cout << "o";
+                        print = true;
+                    }
+                }
+                if(!print)
+                    cout << " ";
+                
+            }
         }
         cout << endl;
     }
@@ -105,6 +121,23 @@ void input()
 
 void logic()
 {
+    // ---
+    int x_prev = x_tail[0];
+    int y_prev = y_tail[0];
+    int x2_prev, y2_prev;
+    x_tail[0] = x;
+    y_tail[0] = y;
+
+    for(int i = 0; i < n_tail; i++)
+    {
+        x2_prev = x_tail[i];
+        y2_prev = y_tail[i];
+        x_tail[i] = x_prev;
+        y_tail[i] = y_prev;
+        x_prev = x2_prev;
+        y_prev = y2_prev;
+    }
+    // ---
     switch (direction)
     {
     case LEFT:
@@ -126,10 +159,17 @@ void logic()
     if(x > width || x < 0 || y > height || y < 0)
         game_over = true;
 
+    for(int i = 0; i < n_tail; i++)
+    {
+        if(x_tail[i] == x && y_tail[i] == y)
+            game_over = true;
+    }
+
     if(x == x_fruit && y == y_fruit)
     {
         score += 10;
         x_fruit = rand() % width;
         y_fruit = rand() % height;
+        n_tail++;
     }
 }
