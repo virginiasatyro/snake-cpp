@@ -27,6 +27,7 @@ int main()
         input();
         logic();
         // sleep
+        usleep(30000);
     }
     
     return 0;
@@ -102,5 +103,21 @@ void input()
 
 void logic()
 {
-
+    switch (direction)
+    {
+    case LEFT:
+        x--;
+        break;
+    case RIGHT:
+        x++;
+        break;
+    case UP:
+        y--;
+        break;
+    case DOWN:
+        y++;
+        break;  
+    default:
+        break;
+    }
 }
