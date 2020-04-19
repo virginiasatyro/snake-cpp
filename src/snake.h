@@ -13,8 +13,8 @@
 
 #define SNAKE_MAX 100
 
-#define SNAKE_HEAD '●'
-#define SNAKE_BODY '•'
+#define SNAKE_HEAD "●"
+#define SNAKE_BODY "•"
 
 enum Direction {STOP = 0, LEFT, RIGHT, UP, DOWN};
 
@@ -27,7 +27,7 @@ private:
     Direction _direction;
 
 public: 
-    Snake();  // constructor 
+    Snake(int, int);  // constructor 
     ~Snake(); // destructor
 
     // set functions 
@@ -40,6 +40,7 @@ public:
     int getY();
     Direction getDirection();
 
+    void move(Direction);
 };
 
 #endif // SNAKE_H

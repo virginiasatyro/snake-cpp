@@ -12,9 +12,12 @@
 #include "snake.h"
 
 // constructor 
-Snake::Snake()
+Snake::Snake(int x, int y)
 {
     setDirection(STOP);
+
+    setX(x);
+    setY(y);
 }
 
 // destructor
@@ -33,6 +36,7 @@ void Snake::setY(int y)
 {
     _y = y;
 }
+
 void Snake::setDirection(Direction d)
 {
     _direction = d;
@@ -52,4 +56,25 @@ int Snake::getY()
 Direction Snake::getDirection()
 {
     return _direction;
+}
+
+void Snake::move(Direction dir)
+{
+    switch (dir)
+    {
+    case LEFT:
+        setX(getX() - 1);
+        break;
+    case RIGHT:
+        setX(getX() + 1);
+        break;
+    case UP:
+        setY(getY() - 1);
+        break;
+    case DOWN:
+        setY(getY() + 1);
+        break;
+    default:
+        break;
+    }
 }
