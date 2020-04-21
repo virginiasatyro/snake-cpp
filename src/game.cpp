@@ -142,29 +142,8 @@ void Game::input()
             snake->setDirection(UP);
         else if(key == MOVE_DOWN)
             snake->setDirection(DOWN);
-        
-        //snake->move(snake->getDirection());
-        // switch (key)
-        // {
-        // case MOVE_LEFT:
-        //     cout << "MOVE LEFT";
-        //     snake->setDirection(LEFT);
-        //     break;
-        // case MOVE_RIGHT:
-        //     snake->setDirection(RIGHT);
-        //     break;
-        // case MOVE_UP:
-        //     snake->setDirection(UP);
-        //     break;
-        // case MOVE_DOWN:
-        //     snake->setDirection(DOWN);
-        //     break;
-        // case QUIT:
-        //     setGameOver(true);
-        //     break;
-        // default:
-        //     break;
-        // }
+        else if(key == QUIT)
+            setQuit(true); 
     }
 }
 
@@ -177,39 +156,12 @@ void Game::logic()
     Direction dir = snake->getDirection();
 
     snake->move(snake->getDirection());
-
-    // if(dir == LEFT)
-    //     snake->setX(x_snake--);
-    // else if(dir == RIGHT)
-    //     snake->setX(x_snake++);
-    // else if(dir == UP)
-    //     snake->setY(y_snake--);
-    // else if(dir == DOWN)
-    //     snake->setY(y_snake++);
-
-    // switch (snake->getDirection())
-    // {
-    // case LEFT:
-    //     snake->setX(x_snake--);
-    //     break;
-    // case RIGHT:
-    //     snake->setX(x_snake++);
-    //     break;
-    // case UP:
-    //     snake->setY(y_snake--);
-    //     break;
-    // case DOWN:
-    //     snake->setY(y_snake++);
-    //     break;
-    // default:
-    //     break;
-    // }
 }
 
 // run game 
 void Game::run()
 {
-    while (!getGameOver())
+    while (!getGameOver() && !getQuit())
     {
         draw();
         input();
