@@ -43,7 +43,7 @@ void Game::setHeight(int height)
 
 void Game::setScore(int score)
 {
-    _score = 0;
+    _score = score;
 }
 
 void Game::setGameOver(bool game_over)
@@ -156,9 +156,21 @@ void Game::logic()
     // auxiliar variables
     int x_snake = snake->getX();
     int y_snake = snake->getY();
+    int x_fruit = fruit->getX();
+    int y_fruit = fruit->getY();
     Direction dir = snake->getDirection();
 
     snake->move(snake->getDirection());
+
+    if(x_snake > WIDTH - 1 || x_snake < 0 || y_snake > HEIGHT - 1 || y_snake < 0)
+        setGameOver(true);
+
+    if(x_snake == x_fruit && y_snake == y_fruit)
+    {
+        scoreUp();
+        fruit->setX(rand() % WIDTH);
+        fruit->setY(rand() % HEIGHT);
+    }
 }
 
 // run game 
