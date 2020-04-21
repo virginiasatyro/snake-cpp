@@ -13,11 +13,10 @@
 // constructor
 Game::Game()
 {
-    srand(time(NULL));
-
     setGameOver(false);
     
     snake = new Snake(WIDTH/2, HEIGHT/2);
+    fruit = new Fruit(WIDTH, HEIGHT);
 
     setQuit(false);
     setScore(0);
@@ -95,6 +94,8 @@ void Game::draw()
     // auxiliar variables
     int x_snake = snake->getX();
     int y_snake = snake->getY();
+    int x_fruit = fruit->getX();
+    int y_fruit = fruit->getY();
 
     system("clear");
 
@@ -110,6 +111,8 @@ void Game::draw()
                 cout << WALL_LEFT;
             if(i == y_snake && j == x_snake)
                 cout << SNAKE_HEAD;
+            else if(i == y_fruit && j == x_fruit)
+                cout << FRUIT;
             else 
                 cout << EMPTY_SPACE;
             if(j == getWidth() - 1)

@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "snake.h"
+#include "fruit.h"
 #include "input.h"
 
 using namespace std;
@@ -45,6 +46,7 @@ private:
     bool _quit;      // quit game 
 
     Snake *snake;
+    Fruit *fruit;
 
 public:
     Game(); // constructor
