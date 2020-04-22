@@ -37,6 +37,21 @@ void Snake::setY(int y)
     _y = y;
 }
 
+void Snake::setXTail(int n, int value)
+{
+    _x_tail[n] = value;
+}
+
+void Snake::setYTail(int n, int value)
+{
+    _y_tail[n] = value;
+}
+
+void Snake::setSnakeLenght(int lenght)
+{
+    _snake_length = lenght;
+}
+
 void Snake::setDirection(Direction d)
 {
     _direction = d;
@@ -51,6 +66,21 @@ int Snake::getX()
 int Snake::getY()
 {
     return _y;    
+}
+
+int Snake::getXTail(int n)
+{
+    return _x_tail[n];
+}
+
+int Snake::getYTail(int n)
+{
+    return _y_tail[n];
+}
+
+int Snake::getSnakeLenght()
+{
+    return _snake_length;
 }
 
 Direction Snake::getDirection()
@@ -77,4 +107,9 @@ void Snake::move(Direction dir)
     default:
         break;
     }
+}
+
+void Snake::growSnake()
+{
+    setSnakeLenght(getSnakeLenght() + 1);
 }
