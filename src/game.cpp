@@ -20,8 +20,6 @@ Game::Game()
 
     setQuit(false);
     setScore(0);
-    setWidth(WIDTH);
-    setHeight(HEIGHT);
 }
 
 // destructor 
@@ -31,16 +29,6 @@ Game::~Game()
 }
 
 // set functions 
-void Game::setWidth(int width)
-{
-    _width = width;
-}
-
-void Game::setHeight(int height)
-{
-    _height = height;
-}
-
 void Game::setScore(int score)
 {
     _score = score;
@@ -57,16 +45,6 @@ void Game::setQuit(bool quit)
 }
 
 // get functions 
-int Game::getWidth()
-{
-    return _width;
-}
-
-int Game::getHeight()
-{
-    return _height;
-}
-
 int Game::getScore()
 {
     return _score;
@@ -100,13 +78,13 @@ void Game::draw()
 
     system("clear");
 
-    for(int i = 0; i < getWidth() + 2; i++) // top wall
+    for(int i = 0; i < WIDTH + 2; i++) // top wall
         cout << WALL_TOP;
     cout << endl;
 
-    for(int i = 0; i < getHeight(); i++) // print walls on the side
+    for(int i = 0; i < HEIGHT; i++) // print walls on the side
     {
-        for(int j = 0; j < getWidth(); j++)
+        for(int j = 0; j < WIDTH; j++)
         {
             if(j == 0)
                 cout << WALL_LEFT;
@@ -130,13 +108,13 @@ void Game::draw()
                 if(!print)
                     cout << EMPTY_SPACE;
             }
-            if(j == getWidth() - 1)
+            if(j == WIDTH - 1)
                 cout << WALL_RIGHT;
         }
         cout << endl;
     }
 
-    for(int i = 0; i < getWidth() + 2; i++)
+    for(int i = 0; i < WIDTH + 2; i++)
         cout << WALL_BOTTOM;
     cout << endl;
 

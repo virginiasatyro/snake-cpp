@@ -19,7 +19,7 @@
 
 using namespace std;
 
-#define WIDTH  20
+#define WIDTH  40
 #define HEIGHT 20
 
 // define moving keys
@@ -39,8 +39,6 @@ const char QUIT = 'Q';
 class Game
 {
 private:
-    int _width;      // game width
-    int _height;     // game height
     int _score;      // score of player
     bool _game_over; //
     bool _quit;      // quit game 
@@ -53,33 +51,20 @@ public:
     ~Game(); // destructor 
 
     // set functions 
-    void setWidth(int);
-    void setHeight(int);
     void setScore(int);
     void setGameOver(bool);
     void setQuit(bool);
 
     // get functions 
-    int getWidth();
-    int getHeight();
     int getScore();
     bool getGameOver();
     bool getQuit();
 
-    // scores 
-    void scoreUp();
-
-    // draw functions
-    void draw();
-
-    // input functions 
-    void input();
-
-    // logic of game 
-    void logic();
-
-    // run game 
-    void run();
+    void scoreUp(); // scores 
+    void draw();    // draw functions
+    void input();   // input functions 
+    void logic();   // logic of game 
+    void run();     // run game 
 };
 
 #endif // GAME_H
